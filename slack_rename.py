@@ -7,7 +7,6 @@ from slack_sdk.errors import SlackApiError
 def get_args():
     parser = argparse.ArgumentParser(description='Command line options for this script')
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('-j', '--join', action='store_const', const='join', help='全てのチャンネルに参加する')
     group.add_argument('-l', '--list', action='store_const', const='list', help='Create a CSV list of all Slack channels')
     group.add_argument('-r', '--rename', action='store_const', const='rename', help='Rename Slack channels based on a CSV')
     return parser.parse_args()
@@ -55,9 +54,9 @@ def rename_channnels(slack_token):
             name=row['NewChannelName']
           )
           if response["ok"]:
-            print(f"チャンネル名を{row['NewChannelName']}にリネームしました。")
+            print(f"The channel name has been renamed to {row['NewChannelName']}")
           else:
-            print(f"チャンネル名のリネームに失敗しました。エラーメッセージ: {response['error']}")
+            print(f"The channel renaming has failed. Error message: {response['error']}")
         except SlackApiError as e:
           print(f"slack api error: {e.response['error']}")
 
