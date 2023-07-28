@@ -37,7 +37,6 @@ def create_channel_list(slack_token):
   client = create_web_client(slack_token)
   channel_list =  featch_channel_list(client)
   create_csv().writerow(['ChannelID', 'ChannelName', 'NewChannelName'])
-  print(channel_list[0])
   for i in range(0,len(channel_list)):
     channnel_id = channel_list[i]['id']
     channnel_name = channel_list[i]['name']
@@ -49,9 +48,6 @@ def rename_channnels(slack_token):
     reader = csv.DictReader(csvfile)
     for row in reader:
       if not row['NewChannelName'] == "":
-        print(row['ChannelID'])
-        print(row['ChannelName'])
-        print(row['NewChannelName'])
         try:
           response = client.conversations_rename(
             token=slack_token,
