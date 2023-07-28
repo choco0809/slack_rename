@@ -4,6 +4,13 @@ By using this, you can accomplish the following:
 1. By utilizing the CSV file exported in step 1, you can bulk rename channel names.
 
 ## Getting Started
+### Setting Environment Variables
+Set the User OAuth Token to the SLACK_API_TOKEN variable.<br>
+Please issue the User OAuth Token from the following URL:https://api.slack.com/apps<br>
+※ The required scopes are as follows:
+- channels:read
+- channels:write
+
 ### 1. Installing the Library
 - `$ pip3 install -r requirements.txt`
 
