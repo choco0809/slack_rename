@@ -24,7 +24,7 @@ def append_csv():
 def create_web_client(slack_token):
   return WebClient(token=slack_token)
 
-def featch_channel_list(client):
+def fetch_channel_list(client):
   try:
     response = client.conversations_list()
     return response["channels"]
@@ -34,7 +34,7 @@ def featch_channel_list(client):
 
 def create_channel_list(slack_token):
   client = create_web_client(slack_token)
-  channel_list =  featch_channel_list(client)
+  channel_list =  fetch_channel_list(client)
   create_csv().writerow(['ChannelID', 'ChannelName', 'NewChannelName'])
   for i in range(0,len(channel_list)):
     channnel_id = channel_list[i]['id']
