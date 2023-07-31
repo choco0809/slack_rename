@@ -26,7 +26,7 @@ def create_web_client(slack_token):
 
 def fetch_channel_list(client):
   try:
-    response = client.conversations_list()
+    response = client.conversations_list(exclude_archived=True)
     return response["channels"]
 
   except SlackApiError as e:
